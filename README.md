@@ -1,4 +1,3 @@
-Ganti seluruh isi file README.md di VS Code dengan versi bahasa Inggris di bawah ini, simpan (Ctrl + S), lalu unggah ke repositori GitHub-mu:
 # 🩺 SYNAPSE AI — System for Symptom Navigation & Predictive Evaluation
 
 ![Status](https://img.shields.io/badge/Status-Completed_MVP-10B981?style=flat-square)
