@@ -1,0 +1,515 @@
+/* ============================================================
+   SYNAPSE AI — Custom Stylesheet v2.0
+   Tailwind CSS handles the majority of styling.
+   This file provides:
+   1. Smooth fade-in animations for result cards
+   2. Soft hover effects on interactive cards
+   3. Minimal custom scrollbar
+   4. Modal overlay animations
+   5. Dropdown menu styles
+   6. Dark mode overrides for custom CSS classes
+   ============================================================ */
+
+/* ── Google Font import ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* ── Base reset / font ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F8FAFC;
+  color: #1E293B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Dark mode body override ─────────────────────────────────── */
+.dark body,
+html.dark body {
+  background-color: #0F172A;
+  color: #F1F5F9;
+}
+
+/* ── Custom Scrollbar (Webkit) ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-track { background: #1E293B; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #64748B; }
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 #F1F5F9;
+}
+.dark * {
+  scrollbar-color: #475569 #1E293B;
+}
+
+/* ── Fade-in animation for result cards ─────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Modal backdrop + panel animations */
+@keyframes modalBackdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalPanelIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Applied via JS when results appear */
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropIn 0.2s ease both;
+}
+
+.animate-modal-panel {
+  animation: modalPanelIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-dropdown {
+  animation: dropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger delays for multiple cards */
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+
+/* ── Spinner for AI "thinking" animation ────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.8; }
+  70%  { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #D1FAE5;
+  border-top-color: #10B981;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dark .spinner {
+  border-color: #064E3B;
+  border-top-color: #34D399;
+}
+
+.pulse-dot {
+  animation: pulse-ring 1.4s ease-in-out infinite;
+}
+
+/* ── Result card hover effects ──────────────────────────────── */
+.result-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.dark .result-card:hover {
+  box-shadow: 0 8px 24px rgba(52, 211, 153, 0.12), 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ── History item hover ─────────────────────────────────────── */
+.history-item {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.history-item:hover {
+  background-color: #F0FDF4;
+  transform: translateX(2px);
+}
+
+.dark .history-item:hover {
+  background-color: #064E3B33;
+}
+
+/* ── Symptom pill / chip hover ──────────────────────────────── */
+.symptom-chip {
+  transition: background-color 0.15s ease, color 0.15s ease,
+              border-color 0.15s ease, transform 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.symptom-chip:hover {
+  transform: translateY(-1px);
+}
+
+.symptom-chip.selected {
+  background-color: #059669;
+  color: #FFFFFF;
+  border-color: #059669;
+}
+
+.dark .symptom-chip.selected {
+  background-color: #047857;
+  border-color: #34D399;
+}
+
+/* ── Input focus ring ───────────────────────────────────────── */
+#symptomInput:focus {
+  outline: none;
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.dark #symptomInput:focus {
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+
+/* ── Triage badge colors ─────────────────────────────────────── */
+.badge-mandiri {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #6EE7B7;
+}
+
+.badge-konsultasi {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FCD34D;
+}
+
+.badge-darurat {
+  background-color: #FFE4E6;
+  color: #9F1239;
+  border: 1px solid #FECDD3;
+}
+
+/* Dark mode badge variants */
+.dark .badge-mandiri {
+  background-color: #064E3B;
+  color: #6EE7B7;
+  border-color: #047857;
+}
+
+.dark .badge-konsultasi {
+  background-color: #451A03;
+  color: #FCD34D;
+  border-color: #92400E;
+}
+
+.dark .badge-darurat {
+  background-color: #4C0519;
+  color: #FDA4AF;
+  border-color: #9F1239;
+}
+
+/* Triage card left border accent */
+.triage-mandiri   { border-left: 4px solid #10B981; }
+.triage-konsultasi { border-left: 4px solid #F59E0B; }
+.triage-darurat   { border-left: 4px solid #F43F5E; }
+
+/* ── Section divider line ───────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #E2E8F0, transparent);
+  margin: 2rem 0;
+}
+
+.dark .section-divider {
+  background: linear-gradient(to right, transparent, #334155, transparent);
+}
+
+/* ── Button press effect ─────────────────────────────────────── */
+.btn-primary {
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ── Disclaimer box ──────────────────────────────────────────── */
+.disclaimer-box {
+  border-left: 3px solid #F59E0B;
+  background-color: #FFFBEB;
+}
+
+.dark .disclaimer-box {
+  background-color: #1C1500;
+  border-left-color: #D97706;
+}
+
+/* ── No result / empty state ─────────────────────────────────── */
+.empty-state {
+  opacity: 0.6;
+}
+
+/* ── Responsive textarea auto-height feel ───────────────────── */
+#symptomInput {
+  resize: none;
+  min-height: 52px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ── Smooth section reveal ───────────────────────────────────── */
+.section-reveal {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Progress/score bar ──────────────────────────────────────── */
+.score-bar-fill {
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #10B981, #059669);
+}
+
+/* ── Modal overlay ───────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-panel {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.dark .modal-panel {
+  background: #1E293B;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ── Dropdown menu ───────────────────────────────────────────── */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  z-index: 40;
+  overflow: hidden;
+}
+
+.dark .dropdown-menu {
+  background: #1E293B;
+  border-color: #334155;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #F0FDF4;
+  color: #047857;
+}
+
+.dark .dropdown-item {
+  color: #CBD5E1;
+}
+
+.dark .dropdown-item:hover {
+  background-color: #064E3B33;
+  color: #34D399;
+}
+
+/* ── Toggle switch ───────────────────────────────────────────── */
+.toggle-track {
+  position: relative;
+  display: inline-flex;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background-color: #CBD5E1;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toggle-track.active {
+  background-color: #10B981;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggle-track.active .toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ── Logo trigger button ─────────────────────────────────────── */
+#logoTrigger {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 4px 8px 4px 4px;
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+#logoTrigger:hover {
+  background-color: #F0FDF4;
+}
+
+.dark #logoTrigger:hover {
+  background-color: #064E3B33;
+}
+
+/* ── SOS contact cards ───────────────────────────────────────── */
+.sos-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sos-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ── Dark mode global element transitions ────────────────────── */
+header, main, footer, section, div, button, input, textarea, span, p, h1, h2, h3, h4 {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+}
+
+/* override: buttons should be snappier */
+button {
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+              color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+/* ── Profile photo blur ──────────────────────────────────────── */
+.profile-photo-blurred {
+  filter: blur(4px);
+  transition: filter 0.3s ease;
+}
