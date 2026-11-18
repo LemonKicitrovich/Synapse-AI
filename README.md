@@ -1,3 +1,4 @@
+Ganti seluruh isi file README.md di VS Code dengan versi bahasa Inggris di bawah ini, simpan (Ctrl + S), lalu unggah ke repositori GitHub-mu:
 # 🩺 SYNAPSE AI — System for Symptom Navigation & Predictive Evaluation
 
 ![Status](https://img.shields.io/badge/Status-Completed_MVP-10B981?style=flat-square)
@@ -5,77 +6,78 @@
 ![Built With](https://img.shields.io/badge/Built_With-IBM_Bob-0F172A?style=flat-square)
 ![Tech](https://img.shields.io/badge/Stack-HTML5_%7C_Tailwind_CSS_%7C_Vanilla_JS-38BDF8?style=flat-square)
 
-**SYNAPSE AI** adalah aplikasi web asisten kesehatan mandiri berbasis *frontend* yang dirancang untuk membantu masyarakat melakukan skrining gejala awal dan mendapatkan panduan *triage* medis secara cepat, terstruktur, dan mudah dipahami.
+**SYNAPSE AI** is a frontend-based self-health assistant web application designed to help users perform preliminary symptom screening and receive structured medical triage guidance quickly and clearly.
 
-Proyek ini dikembangkan sebagai **Final Project (Capstone Project)** pada program **Hacktiv8 x IBM SkillsBuild (2026)** menggunakan **IBM Bob**.
-
----
-
-## Latar Belakang & Tujuan
-
-Masyarakat sering kali mengalami kebingungan saat menghadapi keluhan kesehatan mendadak—sulit membedakan mana gejala ringan yang cukup ditangani di rumah dan mana kondisi serius yang memerlukan penanganan medis segera. Pencarian informasi acak di internet kerap memicu kepanikan berlebih (*cyberchondria*) atau justru keterlambatan penanganan.
-
-**SYNAPSE AI** hadir untuk menjembatani kebutuhan tersebut melalui:
-* Penerjemahan keluhan bahasa sehari-hari menjadi estimasi kondisi medis yang relevan.
-* Klasifikasi tingkat urgensi (*triage*) yang jelas agar pengguna tahu langkah selanjutnya.
-* Panduan pertolongan pertama (*first-aid*) yang aman serta peringatan tanda bahaya (*red flags*).
+This project was developed as the **Final Project (Capstone Project)** for the **Hacktiv8 x IBM SkillsBuild (2026)** program using **IBM Bob**.
 
 ---
 
-## Fitur Utama
+## 🎯 Background & Objective
 
-1. **Basis Pengetahuan 140+ Kondisi Medis:**
-   Mencakup penyakit umum harian, gangguan pernapasan/THT, pencernaan, penyakit tropis Indonesia (seperti DBD dan Tifus), kulit, mata, saraf/ergonomi, hingga kondisi gawat darurat. Setiap hasil dilengkapi penamaan standar **`Nama Umum (Nama Ilmiah / Medis)`**.
-2. **Sistem Klasifikasi Triage 3 Tingkat:**
-   * 🟢 **Mandiri di Rumah:** Keluhan ringan yang dapat ditangani dengan perawatan mandiri dan pemantauan.
-   * 🟡 **Konsultasi Dokter:** Kondisi yang memerlukan pemeriksaan dan resep tenaga medis profesional.
-   * 🔴 **Darurat / Segera ke IGD:** Kondisi berisiko tinggi yang membutuhkan penanganan medis darurat segera.
-3. **Mesin Analisis Berbasis Aturan & Guardrails Keamanan:**
-   * Menggunakan algoritma *Word-Boundary Keyword Matching & Relevance Scoring* untuk menghitung tingkat kecocokan gejala secara akurat.
-   * Dilengkapi **Input Guardrails** yang secara otomatis menyaring dan menolak input tidak valid, terlalu singkat (`< 3` karakter), atau teks acak (*gibberish*) agar sistem tidak memberikan hasil keliru (*false positive*).
-4. **Menu Logo Interaktif & Kontrol Sistem:**
-   * **Tentang Pembuat:** Profil pengembang dan informasi program Capstone.
-   * **Arsitektur & Database AI:** Penghitung otomatis total kondisi medis yang terindeks dan penjelasan transparansi logika sistem.
-   * **Nomor Darurat Medis (SOS):** Daftar kontak cepat layanan kesehatan darurat Indonesia (`119`, `112`, `1500-567`).
-   * **Pengaturan Sistem:** Pengalih tema **Mode Gelap (Dark Mode)**, pengaturan kecepatan simulasi analisis AI, dan manajemen riwayat pemeriksaan.
-5. **Riwayat Pemeriksaan Lokal (*LocalStorage*):**
-   Menyimpan riwayat pengecekan gejala yang valid langsung di browser pengguna tanpa memerlukan server eksternal sehingga privasi tetap terjaga.
+Many people struggle to distinguish between minor symptoms that can be managed safely at home and serious medical conditions that require immediate professional care. Searching randomly on the internet often leads to unnecessary panic (*cyberchondria*) or delayed treatment.
+
+**SYNAPSE AI** bridges this gap by:
+* Translating everyday symptom descriptions into relevant preliminary health insights.
+* Providing clear urgency classifications (*triage*) so users know their exact next steps.
+* Offering safe first-aid recommendations alongside critical warning signs (*red flags*).
 
 ---
 
-## Struktur Proyek
+## ✨ Key Features
 
-Aplikasi ini dibangun menggunakan arsitektur *frontend* modular tanpa ketergantungan *framework* berat maupun API eksternal:
+1. **140+ Medical Conditions Knowledge Base:**
+   Covers common daily illnesses, respiratory/ENT issues, digestive disorders, tropical diseases, dermatology, ophthalmology, ergonomics/neurology, and emergency conditions. Every result displays both common and scientific terminology in the format **`Common Name (Scientific / Medical Name)`**.
+2. **3-Tier Medical Triage Classification:**
+   * 🟢 **Self-Care at Home (*Mandiri di Rumah*):** Mild symptoms manageable with home care and monitoring.
+   * 🟡 **Consult a Doctor (*Konsultasi Dokter*):** Conditions requiring clinical evaluation and medical prescription.
+   * 🔴 **Emergency / Go to ER (*Darurat / Segera ke IGD*):** High-risk symptoms requiring immediate emergency medical attention.
+3. **Rule-Based Matching Engine & Input Guardrails:**
+   * Uses **Word-Boundary Keyword Matching & Relevance Scoring** to calculate symptom match accuracy.
+   * Built-in **Input Guardrails** filter out empty, overly short (`< 3` characters), or random gibberish inputs to prevent false-positive results.
+4. **Interactive Header Logo Menu & System Controls:**
+   * **About Creator:** Developer profile and Capstone program details.
+   * **AI Architecture & Database:** Live dynamic counter of indexed medical conditions and transparent logic documentation.
+   * **Emergency Medical Contacts (SOS):** Quick-access Indonesian emergency hotlines (`119`, `112`, `1500-567`).
+   * **System Settings:** Real-time **Dark Mode** toggle, AI analysis simulation speed control, and history management.
+5. **Local Checkup History (*LocalStorage*):**
+   Stores valid symptom checks directly in the user's browser without external servers, keeping user data private and lightweight.
+
+---
+
+## 📁 Project Structure
+
+Built with a clean, modular frontend architecture with zero external API dependencies:
 
 ```text
-SYNAPSE-AI/
-├── index.html      # Struktur antarmuka utama, modal menu interaktif, dan konfigurasi Tailwind
-├── style.css       # Kustomisasi animasi, transisi halus, dan styling pendukung
-├── data.js         # Basis pengetahuan 140+ kondisi medis (keywords, triage, first-aid, red flags)
-├── script.js       # Logika pencocokan gejala, input guardrails, Dark Mode, dan LocalStorage
-└── README.md       # Dokumentasi proyek
+Synapse-AI/
+├── index.html      # Main UI layout, interactive dropdown modals, and Tailwind configuration
+├── style.css       # Custom animations, smooth transitions, and supporting styles
+├── data.js         # Knowledge base of 140+ medical conditions (keywords, triage, first-aid, red flags)
+├── script.js       # Symptom matching algorithm, input guardrails, Dark Mode, and LocalStorage logic
+└── README.md       # Project documentation
 ```
 
 ---
 
-## Cara Menjalankan Aplikasi
+## 🚀 Getting Started
 
-Karena berjalan 100% di sisi klien (*client-side*), aplikasi ini dapat langsung dijalankan tanpa proses instalasi:
+Because **SYNAPSE AI** runs 100% client-side, no build tools or installations are required:
 
-1. Unduh atau *clone* seluruh file di dalam folder proyek ini.
-2. Pastikan kelima file (`index.html`, `style.css`, `data.js`, `script.js`, `README.md`) berada dalam satu folder yang sama.
-3. Klik dua kali file **`index.html`** untuk membukanya langsung di browser (Chrome, Edge, Firefox, atau Safari), atau gunakan ekstensi **Live Server** di VS Code.
+1. Clone or download this repository.
+2. Ensure all files (`index.html`, `style.css`, `data.js`, `script.js`, `README.md`) remain in the same root directory.
+3. Double-click **`index.html`** to launch it directly in any modern web browser (Chrome, Edge, Firefox, or Safari), or run it via **Live Server** in VS Code.
 
 ---
 
-##  Pengembang
+## 👨‍💻 Developer
 
-* **Nama:** Raihan Noviansyah
-* **Peran:** Frontend & AI System Developer
+* **Name:** Raihan Noviansyah
+* **Role:** Frontend & AI System Developer
 * **Program:** Capstone Project — Hacktiv8 x IBM SkillsBuild (2026)
 
 ---
 
-## Disclaimer Medis
+## ⚠️ Medical Disclaimer
 
-> **Penting:** Informasi dan hasil evaluasi yang ditampilkan oleh **SYNAPSE AI** hanya bertujuan untuk edukasi dan panduan *triage* awal, **bukan merupakan diagnosis medis klinis**. Selalu konsultasikan kondisi kesehatan Anda dengan dokter atau tenaga kesehatan berlisensi untuk mendapatkan pemeriksaan dan penanganan yang akurat.
+> **Important:** The information and triage evaluations provided by **SYNAPSE AI** are strictly for educational and preliminary guidance purposes only and **do not constitute a clinical medical diagnosis**. Always consult a licensed physician or qualified healthcare provider for accurate diagnosis and treatment.
+
